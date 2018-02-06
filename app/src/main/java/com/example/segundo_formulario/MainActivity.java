@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     Spinner spdia,spmes,spano;
     EditText etnombre,etTelefono,etsueldo,etprima,ettotal;
     Button botonirpf;
+    int prima;
 
 
 
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        prima = 0;
 
         botonirpf= (Button)findViewById(R.id.btn_irpf);
 
@@ -67,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickirpf (View view) {
 
+        //OPERAR CON EDIT TEXT
+
         String cajasueldo = etnombre.getText().toString() + " ";
 
         if (cajasueldo.equals("")) {
@@ -88,11 +93,27 @@ public class MainActivity extends AppCompatActivity {
     public void clickmas (View view){
 
 
+        //prima++; Sumar de 1 en 1
+
+        if(prima<100){
+        prima=prima+10;
+
+        etprima.setText(prima+"");}
+
 
 
     }
 
     public void clickmenos (View view){
+
+
+        //prima--; Restar de 1 en 1
+
+
+        if(prima>0){
+            prima=prima-10;
+
+            etprima.setText(prima+"");}
 
 
     }
