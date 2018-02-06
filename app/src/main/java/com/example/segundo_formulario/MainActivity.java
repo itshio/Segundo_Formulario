@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     Spinner spdia,spmes,spano;
     EditText etnombre,etTelefono,etsueldo,etprima,ettotal;
+    Button botonirpf;
 
 
 
@@ -20,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        botonirpf= (Button)findViewById(R.id.btn_irpf);
 
         etnombre= (EditText)findViewById(R.id.et_nombre);
         etTelefono= (EditText)findViewById(R.id.et_telefono);
@@ -61,27 +65,29 @@ public class MainActivity extends AppCompatActivity {
     }// On Create
 
 
-    public void clickirpf (View view){
+    public void clickirpf (View view) {
+
+        String cajasueldo = etnombre.getText().toString() + " ";
+
+        if (cajasueldo.equals("")) {
+
+            Toast.makeText(this, "Debes rellenar el sueldo", Toast.LENGTH_LONG).show();
+        } else {
+
+            double sueldo = Double.parseDouble(cajasueldo);
+            double sueldonuevo = sueldo - (sueldo * 0.10);
+            etsueldo.setText(sueldonuevo + " ");
+            botonirpf.setEnabled(false);
+            etsueldo.setEnabled(false);
+            botonirpf.setText("Aplicado");
 
 
-
-
-
+        }
     }
 
     public void clickmas (View view){
 
-        String cajasueldo = etnombre.getText().toString()+" ";
 
-        if(cajasueldo.equals(" ")){
-
-            Toast.makeText(this,"Debes rellenar el sueldo",Toast.LENGTH_LONG).show();
-        }else{
-
-            double sueldo = Double.parseDouble(cajasueldo);
-            double sueldonuevo = sueldo - (sueldo * 0.10);
-            etsueldo.setText(sueldonuevo+"");
-        }
 
 
     }
