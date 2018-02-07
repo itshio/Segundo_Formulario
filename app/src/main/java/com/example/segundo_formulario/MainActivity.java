@@ -81,10 +81,9 @@ public class MainActivity extends AppCompatActivity {
 
             double sueldo = Double.parseDouble(cajasueldo);
             double sueldonuevo = sueldo - (sueldo * 0.10);
-            etsueldo.setText(sueldonuevo + " ");
-            botonirpf.setEnabled(false);
-            etsueldo.setEnabled(false);
+            etsueldo.setText(sueldonuevo+"");
             botonirpf.setText("Aplicado");
+
 
 
         }
@@ -119,6 +118,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickcalcular (View view){
+
+        String cajasueldo= etsueldo.getText().toString();
+        double sueldo = Double.parseDouble(cajasueldo);
+
+        String cajaprima = etprima.getText().toString();
+        int prima = Integer.parseInt(cajaprima);
+
+        double total = sueldo + prima;
+
+        ettotal.setText(total+"");
 
 
     }
